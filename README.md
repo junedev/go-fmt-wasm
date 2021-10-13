@@ -2,7 +2,7 @@
 
 **DEMO: [go-fmt-wasm.netlify.app](go-fmt-wasm.netlify.app)**
 
-This example uses the `go/format` package instead of compiling the `go fmt` command line because we don't have access to a file-system replacement out of the box in the browser which `go fmt` would need.
+This example uses the `go/format` package instead of compiling the `go fmt` command line tool because we don't have access to a file-system replacement out of the box in the browser which `go fmt` would need.
 
 ## Creating the wasm file
 - Compile the Go code with `GOOS=js GOARCH=wasm go build -o format-go-code.wasm`
