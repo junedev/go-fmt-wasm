@@ -13,5 +13,8 @@ This example uses the `go/format` package instead of compiling the `go fmt` comm
 - The WASM file needs to be loaded, see index.html.
 - Afterwards, the "exported" function (`formatGoCode`) is available in JavaScript.
 
+## Error handling
+- If the formatting did not succeed, an empty string is returned. In that case, the result should not be used to replace the non-formatted code the user wrote.
+
 ## Sources
 - https://golangbot.com/webassembly-using-go/
