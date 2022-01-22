@@ -45,7 +45,7 @@ func    main   ()   {
             .then((result) => {
                 go.run(result.instance);
                 const end1 = performance.now();
-                document.getElementById("loading").innerText = `${end1 - start1}`
+                document.getElementById("loading").innerText = `${Math.ceil(end1 - start1)}`
 
                 const btn = document.getElementById("format-btn")
                 btn.disabled = false
@@ -56,7 +56,7 @@ func    main   ()   {
                     const start2 = performance.now();
                     let result = formatGoCode(node.value)
                     const end2 = performance.now();
-                    document.getElementById("formatting").innerText = `${end2 - start2}`
+                    document.getElementById("formatting").innerText = `${Math.ceil(end2 - start2)}`
                     if (result !== "") {
                         node.value = result
                     }
