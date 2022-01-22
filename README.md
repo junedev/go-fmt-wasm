@@ -4,7 +4,9 @@
 
 This example uses the `go/format` package instead of compiling the `go fmt` command line tool because we don't have access to a file-system replacement out of the box in the browser which `go fmt` would need.
 
-[Tinygo](https://tinygo.org/) produces significantly smaller wasm files so we use that instead of the the standard Go compiler.
+[TinyGo](https://tinygo.org/) produces significantly smaller wasm files so we use that instead of the the standard Go compiler.  
+Compared to the standard Go version, the size of the wasm file drops from ~3MB to ~0,5MB (uncompressed).
+The time from initial page load to when the format button can be pressed was reduced from ~1s to ~0.5s.
 
 ## Creating the wasm file
 - Install tinygo, see https://tinygo.org/getting-started/install/
@@ -25,3 +27,6 @@ This example uses the `go/format` package instead of compiling the `go fmt` comm
 ## Sources
 - https://tinygo.org/docs/guides/webassembly/
 - https://github.com/tinygo-org/tinygo/tree/release/src/examples/wasm/slices
+
+## Motivation
+This is a standalone prototype for https://github.com/exercism/exercism/issues/5986.
