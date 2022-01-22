@@ -26,6 +26,9 @@ func    main   ()   {
      }
     </textarea>
     <button type="button" class="btn btn-primary mx-5" id="format-btn" disabled>Format</button>
+    <h3 class="mx-5 my-3">Performance</h3>
+    <p class="mx-5">Loading time: <span id="loading">...</span>ms</p>
+    <p class="mx-5">Formatting time: <span id="formatting">...</span>ms</p>
 
     <script>
         const start1 = performance.now();
@@ -42,7 +45,7 @@ func    main   ()   {
             .then((result) => {
                 go.run(result.instance);
                 const end1 = performance.now();
-                console.log(`Loading took ${end1 - start1} milliseconds.`);
+                document.getElementById("loading").innerText = `${end1 - start1}`
 
                 const btn = document.getElementById("format-btn")
                 btn.disabled = false
@@ -53,7 +56,7 @@ func    main   ()   {
                     const start2 = performance.now();
                     let result = formatGoCode(node.value)
                     const end2 = performance.now();
-                    console.log(`Formatting took ${end2 - start2} milliseconds.`);
+                    document.getElementById("formatting").innerText = `${end2 - start2}`
                     if (result !== "") {
                         node.value = result
                     }
