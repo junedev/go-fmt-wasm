@@ -25,9 +25,10 @@ func    main   ()   {
           some :=    "test"
      }
     </textarea>
-    <button type="button" class="btn btn-primary mx-5" id="format-btn">Format</button>
+    <button type="button" class="btn btn-primary mx-5" id="format-btn" disabled>Format</button>
 
     <script>
+        const start1 = performance.now();
         // polyfill if instantiateStreaming is not available
         if (!WebAssembly.instantiateStreaming) {
             WebAssembly.instantiateStreaming = async (resp, importObject) => {
@@ -40,11 +41,19 @@ func    main   ()   {
         WebAssembly.instantiateStreaming(fetch("format-go-code.wasm"), go.importObject)
             .then((result) => {
                 go.run(result.instance);
+                const end1 = performance.now();
+                console.log(`Loading took ${end1 - start1} milliseconds.`);
 
-                document.getElementById("format-btn").addEventListener("click", (e) => {
+                const btn = document.getElementById("format-btn")
+                btn.disabled = false
+
+                btn.addEventListener("click", (e) => {
                     e.preventDefault()
                     let node = document.getElementById("source-code")
+                    const start2 = performance.now();
                     let result = formatGoCode(node.value)
+                    const end2 = performance.now();
+                    console.log(`Formatting took ${end2 - start2} milliseconds.`);
                     if (result !== "") {
                         node.value = result
                     }
