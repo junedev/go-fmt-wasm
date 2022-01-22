@@ -1,8 +1,8 @@
 # go fmt in the browser via WebAssembly
 
-**DEMO: [go-fmt-wasm.netlify.app](go-fmt-wasm.netlify.app)**
+**DEMO: [go-fmt-wasm.netlify.app](https://go-fmt-wasm.netlify.app)**
 
-This example uses the `go/format` package instead of compiling the `go fmt` command line because we don't have access to a file-system replacement out of the box in the browser which `go fmt` would need.
+This example uses the `go/format` package instead of compiling the `go fmt` command line tool because we don't have access to a file-system replacement out of the box in the browser which `go fmt` would need.
 
 [Tinygo](https://tinygo.org/) produces significantly smaller wasm files so we use that instead of the the standard Go compiler.
 
@@ -16,6 +16,9 @@ This example uses the `go/format` package instead of compiling the `go fmt` comm
 - The glue code needs to be imported via `<script src="wasm_exec.js"></script>`.
 - The WASM file needs to be loaded, see index.html.
 - Afterwards, the "exported" function (`formatGoCode`) is available in JavaScript.
+
+## Error handling
+- If the formatting did not succeed, an empty string is returned. In that case, the result should not be used to replace the non-formatted code the user wrote.
 
 ## Sources
 - https://tinygo.org/docs/guides/webassembly/
