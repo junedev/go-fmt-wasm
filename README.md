@@ -15,3 +15,14 @@ This example uses the `go/format` package instead of compiling the `go fmt` comm
 
 ## Sources
 - https://golangbot.com/webassembly-using-go/
+
+
+Monkey path wasm_exec.js:
+https://github.com/tinygo-org/tinygo/issues/1140#issuecomment-718145455
+
+Slices Example
+https://github.com/tinygo-org/tinygo/tree/release/src/examples/wasm/slices
+
+https://tinygo.org/
+
+https://tinygo.org/docs/guides/webassembly/

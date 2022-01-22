@@ -44,7 +44,7 @@ func    main   ()   {
                 document.getElementById("format-btn").addEventListener("click", (e) => {
                     e.preventDefault()
                     let node = document.getElementById("source-code")
-                    let result = formatGoCode(node.value)
+                    let result = window.formatGoCode(node.value)
                     if (result !== "") {
                         node.value = result
                     }
