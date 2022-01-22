@@ -1,32 +1,30 @@
 package main
 
 import (
+	"fmt"
 	"go/format"
-	"log"
 	"syscall/js"
 )
 
-func formatGoCode() js.Func {
-	formatFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		if len(args) != 1 {
-			log.Println("invalid number of arguments")
-			return ""
-		}
+func formatGoCode(this js.Value, args []js.Value) interface{} {
+	if len(args) != 1 {
+		fmt.Println("invalid number of arguments")
+		return ""
+	}
 
-		input := args[0].String()
+	input := args[0].String()
 
-		result, err := format.Source([]byte(input))
-		if err != nil {
-			log.Println("failed to format input: ", err)
-			return ""
-		}
+	result, err := format.Source([]byte(input))
+	if err != nil {
+		fmt.Println("failed to format input: ", err)
+		return ""
+	}
 
-		return string(result)
-	})
-	return formatFunc
+	return js.ValueOf(string(result))
 }
 
 func main() {
-	js.Global().Set("formatGoCode", formatGoCode())
-	<-make(chan bool)
+	wait := make(chan struct{}, 0)
+	js.Global().Set("formatGoCode", js.FuncOf(formatGoCode))
+	<-wait
 }
