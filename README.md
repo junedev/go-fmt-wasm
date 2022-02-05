@@ -13,7 +13,7 @@ The time from initial page load to when the format button can be pressed was red
 - There is a custom wasm compile configuration needed (`wasm.json`) otherwise the stack size limit is too low to perform the formatting when there are more then ~100 (?) lines of code.
   With the current setting in the config, 3000 lines of code can be formatted without problems (takes ~130ms).
 - Compile the Go code with `tinygo build -o format-go-code.wasm -target ./wasm.json -no-debug ./go/main.go`
-- To execute the wasm file from JS you also need some glue code. This code can also be found in your local go installation under `{path to your tinygo installation}/targets/wasm_exec.js`. This script needs to be imported as a script in your index.html. (On Linux, the Go directory is usually `/usr/local/lib/tinygo`.)
+- To execute the wasm file from JS you also need some glue code. This code can also be found in your local go installation under `{path to your tinygo installation}/targets/wasm_exec.js`. This script needs to be imported as a script in your index.html. (On Linux, the tinygo directory is usually `/usr/local/lib/tinygo`.)
 - To avoid a memory leak, one function in the `wasm_exec.js` file needs to be replaced, see https://github.com/tinygo-org/tinygo/issues/1140#issuecomment-718145455
 
 ## Using the wasm file
